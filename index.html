@@ -1,0 +1,604 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 16th Birthday ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #713b60;
+    background: linear-gradient(135deg, #fff0f6, #f1e7ff, #ffe0ed);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.hero {
+    min-height: 100vh;
+    padding: 90px 20px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.tag {
+    background: white;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #db589a;
+}
+
+h1 {
+    font: 700 clamp(52px, 10vw, 90px) 'Dancing Script', cursive;
+    color: #e65b9e;
+    margin-top: 25px;
+}
+
+.age {
+    font-size: 100px;
+    font-weight: 700;
+    color: #b68aff;
+    text-shadow: 4px 5px white;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    50% { transform: scale(1.08); }
+}
+
+.hero p {
+    max-width: 480px;
+    line-height: 2;
+    margin: 20px 0 30px;
+    color: #986e8c;
+}
+
+.btn {
+    border: none;
+    border-radius: 35px;
+    padding: 14px 25px;
+    color: white;
+    background: linear-gradient(120deg, #ff78ad, #bd8bff);
+    box-shadow: 0 8px 20px #d887bd44;
+    font-size: 14px;
+    margin: 6px;
+    transition: .25s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.music {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 20;
+    background: white;
+    border: 1px solid #ffe0ef;
+    padding: 10px 15px;
+    border-radius: 30px;
+    box-shadow: 0 5px 20px #a85d8a22;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.music button {
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    background: #f078ad;
+    color: white;
+    font-size: 16px;
+}
+
+section {
+    padding: 65px 20px;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+.heading {
+    font: 700 clamp(38px, 7vw, 55px) 'Dancing Script', cursive;
+    color: #df5897;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    font-size: 13px;
+    line-height: 2;
+    color: #986e8c;
+    margin-bottom: 30px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 9px;
+    box-shadow: 0 6px 22px #c27da522;
+    min-width: 0;
+}
+
+.card img,
+.card video {
+    display: block;
+    width: 100%;
+    max-height: 440px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #f9dfed;
+}
+
+.caption {
+    font-size: 12px;
+    padding: 12px 5px 5px;
+    color: #976582;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.divider {
+    width: 80px;
+    height: 3px;
+    border-radius: 10px;
+    background: #f3a2ca;
+    margin: 22px auto;
+}
+
+/* Letter */
+.envelope {
+    width: min(330px, 85vw);
+    height: 210px;
+    margin: 45px auto 25px;
+    position: relative;
+    cursor: pointer;
+}
+
+.env-base {
+    position: absolute;
+    inset: 0;
+    background: #ff9fc5;
+    border-radius: 10px;
+}
+
+.env-base::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #ffb7d3;
+    clip-path: polygon(0 100%, 50% 45%, 100% 100%);
+    border-radius: 10px;
+}
+
+.env-flap {
+    position: absolute;
+    inset: 0;
+    background: #f578aa;
+    clip-path: polygon(0 0, 100% 0, 50% 60%);
+    transform-origin: top;
+    transition: transform .6s;
+    z-index: 3;
+}
+
+.env-heart {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    top: 52%;
+    transform: translate(-50%, -50%);
+    font-size: 42px;
+}
+
+.paper {
+    position: absolute;
+    top: 8%;
+    left: 5%;
+    width: 90%;
+    height: 84%;
+    padding: 18px;
+    border-radius: 8px;
+    background: #fffdf8;
+    opacity: 0;
+    overflow: hidden;
+    z-index: 1;
+    line-height: 1.9;
+    font-size: 12px;
+    white-space: pre-line;
+    text-align: left;
+    transition: all .7s;
+}
+
+.paper h3 {
+    font: 700 27px 'Dancing Script', cursive;
+    color: #df5897;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.envelope.open .env-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .env-heart {
+    opacity: 0;
+}
+
+.envelope.open .paper {
+    top: -85%;
+    height: 175%;
+    opacity: 1;
+    overflow-y: auto;
+    z-index: 5;
+    box-shadow: 0 5px 25px #b26b9633;
+}
+
+.final {
+    text-align: center;
+    padding-bottom: 80px;
+}
+
+.final p {
+    line-height: 2;
+    color: #986e8c;
+}
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    z-index: 0;
+    pointer-events: none;
+    animation: float 8s linear forwards;
+}
+
+@keyframes float {
+    to {
+        transform: translateY(-110vh) rotate(40deg);
+        opacity: 0;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #ffffff88;
+    font-size: 12px;
+    color: #a77998;
+}
+
+@media (min-width: 650px) {
+    .gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC: Put your song in assets/music/song.mp3 -->
+<audio id="song" loop preload="auto">
+    <source src="C:\\Users\\pc\\OneDrive\\سطح المكتب\\G16\\Albumaty.Com_hmw_almrshdy_tb_b_bhbk.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music">
+    <button id="musicBtn" aria-label="Play or pause music">▶</button>
+    <span id="musicStatus">A song for you ♡</span>
+</div>
+
+<!-- HOME -->
+<header class="hero">
+    <div class="tag">A LITTLE SURPRISE FOR YOU ✨</div>
+
+    <!-- EDIT THE TEXT BELOW -->
+    <h1>Happy Birthday</h1>
+    <h2>To My Favorite Girl Ghadoty ❤️</h2>
+
+    <div class="age">16</div>
+
+    <p>
+        Today is your special day, and I made this little
+        corner of the internet just for you.
+        I hope it makes you smile. 💗
+        بحبك من كل قلبي ي غدودتي 🩷🩷 ✨
+        🩷❤️👈🏻👉🏻 يارب افضل ديما جنبك ومعاكي ي روحي ويخليكي ليا وما يحرمني منك ابدا ابدا ي مامي وتفضلي ديما جنبي ونفضل سوا ديما مع بعض ومجهز بيتنا سوا مع بعض ونفرشه سوا ونعيش فيه سوا انا بحبك اوي انا اسف عل التاخير بجد انا اسف من كل قلبي انا اسف حقك عليا ي مامي وعد ده مش هيتكرر تاني ابدا ابدا ي مامي بحبك اوي خليكي جنبي انا ابنك ومليش غيرك هنا  
+    </p>
+
+    <button class="btn" onclick="showSection('memories')">
+        Our Memories 📸
+    </button>
+
+    <button class="btn" onclick="showSection('letter')">
+        Open Your Letter 💌
+    </button>
+
+    <div class="divider"></div>
+    <p>Made with love, just for you ♡</p>
+</header>
+
+<!-- PHOTOS AND VIDEOS -->
+<section id="memories" class="hidden">
+    <h2 class="heading">Our Little Memories 📸</h2>
+    <p class="subtitle">
+        Every picture holds a little piece of happiness. 💗
+    </p>
+
+    <div class="gallery">
+
+        <!-- Add your photos in assets/images/ -->
+
+        <div class="card">
+            <img src="C:\Users\pc\OneDrive\سطح المكتب\G16\WhatsApp Image 2026-10-09 at 1.53.45 AM.jpeg"
+                alt="Our memory 1" loading="lazy">
+            <div class="caption">من اكتر المسج المحببه ل قلبي بجد  ❤️</div>
+        </div>
+
+        <div class="card">
+            <img src="C:\Users\pc\OneDrive\سطح المكتب\G16\WhatsApp Image 2026-10-09 at 1.53.54 AM.jpeg"
+                alt="Our memory 2" loading="lazy">
+            <div class="caption">مامي 🥹 🌸</div>
+        </div>
+
+        <div class="card">
+            <img src="C:\Users\pc\OneDrive\سطح المكتب\G16\WhatsApp Image 2026-10-09 at 1.58.49 AM.jpeg"
+                alt="Our memory 3" loading="lazy">
+            <div class="caption"> ايام ما كنا بنلعب سوا 💗</div>
+        </div>
+
+        <div class="card">
+            <img src="C:\Users\pc\OneDrive\سطح المكتب\G16\WhatsApp Image 2026-10-09 at 2.00.00 AM (1).jpeg"
+                alt="Our memory 4" loading="lazy">
+            <div class="caption">مين البت الحلوة دي ي مامي 👈🏻👉🏻🩷❤️ ✨</div>
+            
+
+
+
+        </div>
+        <div class="card">
+            <img src="C:\Users\pc\OneDrive\سطح المكتب\G16\WhatsApp Image 2026-10-09 at 2.00.00 AM.jpeg"
+                alt="Our memory 4" loading="lazy">
+            <div class="caption">اجمل ما رايت عيني بجد اي الحلاوة دي ي ناس يختي يختي يختي 🥰🩷🩷 ✨</div>
+
+
+
+
+        </div>
+                </div>
+        <div class="card">
+            <img src="C:\Users\pc\OneDrive\سطح المكتب\G16\WhatsApp Image 2026-10-09 at 2.02.51 AM.jpeg"
+                alt="Our memory 4" loading="lazy">
+            <div class="caption">نفسي الايام دي ترجع ي مامي 🥲🩷 ✨</div>
+        </div>
+        </div>
+        <div class="card">
+            <img src="C:\Users\pc\OneDrive\سطح المكتب\G16\WhatsApp Image 2026-10-09 at 2.02.31 AM.jpeg"
+            alt="Our memory 4" loading="lazy">
+            <div class="caption">بحبك من كل قلبي ي غدودتي 🩷🩷 ✨</div>
+        </div>
+
+        <!-- Add or remove video cards as needed -->
+
+        <div class="card">
+            <video controls playsinline preload="metadata"
+                poster="assets/images/photo1.jpg">
+                <source src="C:\Users\pc\OneDrive\سطح المكتب\G16\WhatsApp Video 2026-10-09 at 1.58.48 AM.mp4"
+                        type="video/mp4">
+                Your browser does not support video.
+            </video>
+            <div class="caption">A little video memory 🎬</div>
+        </div>
+
+        
+
+    
+
+    <button class="btn" onclick="showSection('home')">
+        Back to Home 🏠
+    </button>
+</section>
+
+<!-- LETTER -->
+<section id="letter" class="hidden">
+    <h2 class="heading">A Letter For You 💌</h2>
+    <p class="subtitle">There's something I want you to read...</p>
+
+    <div class="envelope" id="envelope"
+         role="button" tabindex="0"
+         aria-label="Open birthday letter"
+         aria-expanded="false">
+
+        <div class="env-base"></div>
+
+        <div class="paper">
+            <h3>To My Favorite Girl ❤️</h3>
+
+            <!-- EDIT YOUR LETTER HERE -->
+            Happy 16th Birthday, my love! 🎂💗
+
+            I hope this new year of your life brings you
+            happiness, beautiful moments, and dreams
+            coming true.
+
+            You deserve so many reasons to smile.
+            Never forget how special you are and how
+            much your happiness matters.
+
+            I hope this little gift makes your day
+            a little more beautiful.
+
+            Keep smiling, keep shining, and always
+            be the wonderful person you are. 🌸
+
+            Happy Birthday, princess! ❤️
+
+            With love,
+            Your favorite person 💗
+            بحبك ابنك محمد 💗
+        </div>
+
+        <div class="env-flap"></div>
+        <div class="env-heart">💗</div>
+    </div>
+
+    <p class="subtitle" id="letterHint">
+        Tap the envelope to open your letter 💌
+    </p>
+
+    <button class="btn" onclick="showSection('home')">
+        Back to Home 🏠
+    </button>
+</section>
+
+<section class="final">
+    <h2 class="heading">Happy 16th Birthday! 🎂</h2>
+    <p>
+        I hope your day is filled with love and laughter.<br>
+        You deserve all the happiness in the world. 💕
+    </p>
+</section>
+
+<footer>
+    Made with love, just for you 💗
+</footer>
+
+<script>
+// NAVIGATION
+function showSection(id) {
+    document.getElementById('memories').classList.add('hidden');
+    document.getElementById('letter').classList.add('hidden');
+
+    if (id === 'memories') {
+        document.getElementById('memories').classList.remove('hidden');
+    }
+
+    if (id === 'letter') {
+        document.getElementById('letter').classList.remove('hidden');
+    }
+
+    if (id === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+    }
+
+    document.getElementById(id).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+
+// MUSIC
+const song = document.getElementById('song');
+const musicBtn = document.getElementById('musicBtn');
+const musicStatus = document.getElementById('musicStatus');
+
+async function playSong() {
+    try {
+        await song.play();
+        musicBtn.textContent = 'Ⅱ';
+        musicStatus.textContent = 'Now playing ♡';
+    } catch (error) {
+        musicBtn.textContent = '▶';
+        musicStatus.textContent = 'Tap ▶ to play music';
+    }
+}
+
+// Try autoplay when the page opens.
+// Browsers may block sound until the visitor interacts.
+window.addEventListener('load', playSong);
+
+musicBtn.addEventListener('click', async () => {
+    if (song.paused) {
+        await playSong();
+    } else {
+        song.pause();
+        musicBtn.textContent = '▶';
+        musicStatus.textContent = 'Paused ♡';
+    }
+});
+
+// If autoplay was blocked, retry on the first interaction.
+document.addEventListener('pointerdown', function firstInteraction() {
+    if (song.paused) {
+        playSong();
+    }
+}, { once: true });
+
+// LETTER
+const envelope = document.getElementById('envelope');
+const letterHint = document.getElementById('letterHint');
+
+function toggleLetter() {
+    const opened = envelope.classList.toggle('open');
+    envelope.setAttribute('aria-expanded', opened);
+    letterHint.textContent = opened
+        ? 'A little message, just for you ❤️'
+        : 'Tap the envelope to open your letter 💌';
+}
+
+envelope.addEventListener('click', toggleLetter);
+
+envelope.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleLetter();
+    }
+});
+
+// FLOATING HEARTS
+const emojis = ['💗', '💕', '💖', '✨', '🌸'];
+
+setInterval(() => {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (14 + Math.random() * 17) + 'px';
+    heart.style.animationDuration = (6 + Math.random() * 5) + 's';
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 12000);
+}, 700);
+</script>
+
+</body>
+</html>
